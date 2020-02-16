@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const StyledDiv = styled.div`
   background-color: yellow;
+  flex: 1;
 `;
 
 export const Dog = () => {
