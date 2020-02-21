@@ -1,10 +1,10 @@
-import React from 'react'
-import TextField from '@material-ui/core/TextField'
+import React from "react";
+import TextField from "@material-ui/core/TextField";
 
 export const SearchBar = () => {
-    return (
-        <form>
-            <TextField></TextField>
-        </form>
-    )
-}
+  return (
+    <form>
+      <TextField id="outlined-name" label="Search Bar"></TextField>
+    </form>
+  );
+};

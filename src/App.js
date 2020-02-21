@@ -1,9 +1,6 @@
 import React from "react";
-import { Dog } from "./Dog/Dog";
-import { Cat } from "./Cat/Cat";
-import { SearchBar } from "./Searchbar/SearchBar";
-
-import "./App.css";
+import { MovieSearchWithHooks } from "./MoviesSearchWithHooks/MovieSearchWithHooks";
+import { MovieSearchWithClass } from "./MovieSearchWithClass/MovieSearchWithClass";
 import styled from "styled-components";
 
 const SectionContainer = styled.div`
@@ -14,12 +11,9 @@ const SectionContainer = styled.div`
 function App() {
   return (
     <div>
-      <header>
-        <SearchBar />
-      </header>
       <SectionContainer>
-        <Dog />
-        <Cat />
+        <MovieSearchWithHooks />
+        <MovieSearchWithClass />
       </SectionContainer>
     </div>
   );
