@@ -1,4 +1,5 @@
 import React from "react";
+
 import { MovieSearchWithHooks } from "./MoviesSearchWithHooks/MovieSearchWithHooks";
 import { MovieSearchWithClass } from "./MovieSearchWithClass/MovieSearchWithClass";
 import styled from "styled-components";

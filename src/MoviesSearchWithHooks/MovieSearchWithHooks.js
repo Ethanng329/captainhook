@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 
@@ -10,11 +10,31 @@ const StyledContainer = styled.div`
 
 export const MovieSearchWithHooks = () => {
   const [inputString, setInputString] = useState("");
+  const [timer, setTimer] = useState(0);
 
   const handleOnChange = event => setInputString(event.target.value);
 
+  const startClock = stop => {
+    let newTimer = timer;
+    const timerID = setInterval(() => setTimer(newTimer + 1), 2000);
+    if (stop === "stop") {
+      clearInterval(timerID);
+    }
+  };
+
+  useEffect(() => {
+    console.log("effect");
+    return console.log("return effect");
+  });
+
+  // useEffect(() => {
+  //   const timerID = setInterval(() => setTimer(timer + 1), 1000);
+  //   return clearInterval(timerID);
+  // });
+
   return (
     <StyledContainer>
+      {console.log("render")}
       <form>
         <TextField
           id="outlined-name"
@@ -26,6 +46,10 @@ export const MovieSearchWithHooks = () => {
           onChange={handleOnChange}
         />
       </form>
+      <p>{timer}</p>
+      <button onClick={() => startClock()}>start</button>
+      <button onClick={() => setTimer(0)}>stop</button>
+      <button onClick={() => setTimer(0)}>clear</button>
       <div>Hooks</div>
     </StyledContainer>
   );
