@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
+import { dataFetchHelper } from "../service";
+import { Container } from "../MovieSearchWithClass/MovieSearchWithClass";
+import { MovieCard } from "../MovieCard/MovieCard";
 
 const StyledContainer = styled.div`
   height: 100vh;
@@ -8,23 +11,33 @@ const StyledContainer = styled.div`
   background-color: rgb(193, 180, 247);
 `;
 
+const logFlag = true;
+
 export const MovieSearchWithHooks = () => {
   const [inputString, setInputString] = useState("");
-  const [timer, setTimer] = useState(0);
+  const [data, setData] = useState([]);
+  // const [timer, setTimer] = useState(0);
 
   const handleOnChange = event => setInputString(event.target.value);
 
-  const startClock = stop => {
-    let newTimer = timer;
-    const timerID = setInterval(() => setTimer(newTimer + 1), 2000);
-    if (stop === "stop") {
-      clearInterval(timerID);
-    }
+  // const startClock = stop => {
+  //   let newTimer = timer;
+  //   const timerID = setInterval(() => setTimer(newTimer + 1), 2000);
+  //   if (stop === "stop") {
+  //     clearInterval(timerID);
+  //   }
+  // };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    dataFetchHelper(inputString)
+      .then(res => setData(res.Search))
+      .catch(err => console.log(err));
   };
 
   useEffect(() => {
-    console.log("effect");
-    return console.log("return effect");
+    if (logFlag) console.log("effect - hook");
+    return logFlag ? console.log("cleanup effect -hook") : console.log();
   });
 
   // useEffect(() => {
@@ -34,8 +47,9 @@ export const MovieSearchWithHooks = () => {
 
   return (
     <StyledContainer>
-      {console.log("render")}
-      <form>
+      {logFlag && console.log("render - Hook")}
+      <p>Hooks</p>
+      <form onSubmit={handleSubmit}>
         <TextField
           id="outlined-name"
           label="Search Bar"
@@ -46,11 +60,16 @@ export const MovieSearchWithHooks = () => {
           onChange={handleOnChange}
         />
       </form>
-      <p>{timer}</p>
+      <Container>
+        {data &&
+          data.map((item, index) => (
+            <MovieCard key={index + "hook"} data={item} />
+          ))}
+      </Container>
+      {/* <p>{timer}</p>
       <button onClick={() => startClock()}>start</button>
       <button onClick={() => setTimer(0)}>stop</button>
-      <button onClick={() => setTimer(0)}>clear</button>
-      <div>Hooks</div>
+      <button onClick={() => setTimer(0)}>clear</button> */}
     </StyledContainer>
   );
 };

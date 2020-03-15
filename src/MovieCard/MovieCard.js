@@ -8,7 +8,7 @@ const styles = {
   card: {
     display: "flex",
     flexDirection: "column",
-    width: "25%",
+    width: "30%",
     height: "25rem",
     margin: "0.5rem"
   },
@@ -33,7 +33,7 @@ const styles = {
 };
 const Movie = props => {
   const { classes } = props;
-  const { Poster, Title, Year } = props.image;
+  const { Poster, Title, Year } = props.data;
   return (
     <Card className={classes.card}>
       <CardMedia className={classes.media} image={`${Poster}`} title={Title} />

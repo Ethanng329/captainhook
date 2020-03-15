@@ -11,12 +11,10 @@ const SectionContainer = styled.div`
 
 function App() {
   return (
-    <div>
-      <SectionContainer>
-        <MovieSearchWithHooks />
-        <MovieSearchWithClass />
-      </SectionContainer>
-    </div>
+    <SectionContainer>
+      <MovieSearchWithHooks />
+      <MovieSearchWithClass />
+    </SectionContainer>
   );
 }
 

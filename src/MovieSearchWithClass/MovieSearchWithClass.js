@@ -10,11 +10,13 @@ const StyledContainer = styled.div`
   background-color: rgb(247, 185, 185);
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 `;
+
+const logFlag = true;
 
 export class MovieSearchWithClass extends React.Component {
   constructor() {
@@ -23,6 +25,10 @@ export class MovieSearchWithClass extends React.Component {
       inputString: "",
       data: []
     };
+  }
+
+  componentDidMount() {
+    if (logFlag) console.log("didMount - class");
   }
 
   handleOnChange = event =>
@@ -54,9 +60,10 @@ export class MovieSearchWithClass extends React.Component {
   // };
 
   render() {
-    console.log(this.state);
+    if (logFlag) console.log("render -Class");
     return (
       <StyledContainer>
+        <p>Class</p>
         <form onSubmit={this.handleSubmit}>
           <TextField
             id="outlined-name"
@@ -68,15 +75,15 @@ export class MovieSearchWithClass extends React.Component {
           ></TextField>
         </form>
         <Container>
-          {this.state.data.map((item, index) => (
-            <MovieCard image={item} key={`card-${index}`} />
-          ))}
+          {this.state.data &&
+            this.state.data.map((item, index) => (
+              <MovieCard data={item} key={`card-${index}`} />
+            ))}
         </Container>
         {/* <p>{this.state.timer}</p>
         <button onClick={this.handleonClick}>start</button>
         <button onClick={() => this.handleonClick("stop")}>stop</button>
         <button onClick={() => this.setState({ timer: 0 })}>clear</button> */}
-        <div>Class</div>
       </StyledContainer>
     );
   }
