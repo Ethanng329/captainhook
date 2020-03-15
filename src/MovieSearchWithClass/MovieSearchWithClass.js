@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import { MovieCard } from "../MovieCard/MovieCard";
 import { dataFetchHelper } from "../service";
 
-const StyledContainer = styled.div`
+export const StyledContainer = styled.div`
   height: 100vh;
   width: 100%;
   background-color: rgb(247, 185, 185);

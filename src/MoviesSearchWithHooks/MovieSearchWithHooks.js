@@ -18,7 +18,9 @@ export const MovieSearchWithHooks = () => {
   const [data, setData] = useState([]);
   // const [timer, setTimer] = useState(0);
 
-  const handleOnChange = event => setInputString(event.target.value);
+  function handleOnChange(event) {
+    setInputString(event.target.value);
+  }
 
   // const startClock = stop => {
   //   let newTimer = timer;
