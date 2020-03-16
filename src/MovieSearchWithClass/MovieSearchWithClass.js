@@ -3,6 +3,7 @@ import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 import { MovieCard } from "../MovieCard/MovieCard";
 import { dataFetchHelper } from "../service";
+import { log } from "../App";
 
 export const StyledContainer = styled.div`
   height: 100vh;
@@ -16,8 +17,6 @@ export const Container = styled.div`
   flex-wrap: wrap;
 `;
 
-const logFlag = true;
-
 export class MovieSearchWithClass extends React.Component {
   constructor() {
     super();
@@ -28,7 +27,11 @@ export class MovieSearchWithClass extends React.Component {
   }
 
   componentDidMount() {
-    if (logFlag) console.log("didMount - class");
+    log("didMount - class");
+  }
+
+  componentDidUpdate() {
+    log("did update -class");
   }
 
   handleOnChange = event =>
@@ -42,25 +45,11 @@ export class MovieSearchWithClass extends React.Component {
       .then(res => {
         this.setState({ data: res.Search });
       })
-      .catch(err => console.log(err));
+      .catch();
   };
 
-  // handleonClick = stop => {
-  //   if (stop !== "stop") {
-  //     clearInterval(this.id);
-  //     this.setState(prevState => {
-  //       this.id = setInterval(
-  //         () => this.setState({ timer: prevState.timer++ }),
-  //         1
-  //       );
-  //     });
-  //   } else {
-  //     clearInterval(this.id);
-  //   }
-  // };
-
   render() {
-    if (logFlag) console.log("render -Class");
+    log("render -Class");
     return (
       <StyledContainer>
         <p>Class</p>
@@ -80,10 +69,6 @@ export class MovieSearchWithClass extends React.Component {
               <MovieCard data={item} key={`card-${index}`} />
             ))}
         </Container>
-        {/* <p>{this.state.timer}</p>
-        <button onClick={this.handleonClick}>start</button>
-        <button onClick={() => this.handleonClick("stop")}>stop</button>
-        <button onClick={() => this.setState({ timer: 0 })}>clear</button> */}
       </StyledContainer>
     );
   }
