@@ -4,6 +4,8 @@ import { MovieSearchWithHooks } from "./MoviesSearchWithHooks/MovieSearchWithHoo
 import { MovieSearchWithClass } from "./MovieSearchWithClass/MovieSearchWithClass";
 import { TimerWithHooks } from "./TimerWithHooks/TimerWithHooks";
 import { TimerWithClass } from "./TimerWithClass/TimerWithClass";
+import { ExampleClass } from "./ExampleClass/ExampleClass";
+import { ExampleHook } from "./ExampleHook/ExampleHook";
 import styled from "styled-components";
 
 const SectionContainer = styled.div`
@@ -11,7 +13,7 @@ const SectionContainer = styled.div`
   flex-direction: row;
 `;
 
-const logFlag = false;
+const logFlag = true;
 
 export function log(message) {
   if (logFlag) {
@@ -24,8 +26,10 @@ function App() {
     <SectionContainer>
       {/* <MovieSearchWithHooks /> */}
       {/* <MovieSearchWithClass /> */}
-      <TimerWithHooks />
+      {/* <TimerWithHooks /> */}
       <TimerWithClass />
+      {/* <ExampleClass /> */}
+      {/* <ExampleHook /> */}
     </SectionContainer>
   );
 }
